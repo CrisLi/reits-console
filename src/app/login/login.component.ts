@@ -1,5 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService, Credential } from '../shared/auth.service';
+import { Router } from '@angular/router';
+import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
+
+const authConfig = {
+  provider: AuthProviders.Password,
+  method: AuthMethods.Password,
+};
+
+const adminDomain = '51qjusa.com';
+
+export interface Credential {
+  authSource: string;
+  username: string;
+  password: string;
+}
 
 @Component({
   selector: 'rc-login',
@@ -10,9 +24,9 @@ export class LoginComponent implements OnInit {
 
   credential: Credential;
   isProcessing: boolean = false;
-  error: string;
+  error: boolean;
 
-  constructor(private authService: AuthService) { }
+  constructor(private af: AngularFire, private router: Router) { }
 
   ngOnInit() {
     this.credential = {
@@ -20,18 +34,28 @@ export class LoginComponent implements OnInit {
       username: null,
       password: null
     };
+    this.af.auth.subscribe((auth) => {
+      console.log('Login ok');
+    });
   }
 
   login() {
+
     this.isProcessing = true;
-    this.authService
-      .login(this.credential)
-      .subscribe(() => {
-        this.error = 'login error';
-      }, (err) => {
+
+    const credentials = {
+      email: `${this.credential.username}@${adminDomain}`,
+      password: this.credential.password
+    };
+
+    this.af.auth
+      .login(credentials, authConfig)
+      .then((auth) => {
+        this.router.navigate(['/']);
+      })
+      .catch((error: any) => {
         this.isProcessing = false;
-      }, () => {
-        this.isProcessing = false;
+        this.error = true;
       });
   }
 
