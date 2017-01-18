@@ -34,9 +34,6 @@ export class LoginComponent implements OnInit {
       username: null,
       password: null
     };
-    this.af.auth.subscribe((auth) => {
-      console.log('Login ok');
-    });
   }
 
   login() {
