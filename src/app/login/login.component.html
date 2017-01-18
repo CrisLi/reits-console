@@ -1,0 +1,49 @@
+<div class="login-wrapper">
+  <form
+    class="login"
+    novalidate
+    #loingForm="ngForm"
+    (ngSubmit)="login()">
+    <label class="title">Reits Console</label>
+    <div class="login-group">
+      <div class="auth-source select">
+        <select
+          name="authSource"
+          [(ngModel)]="credential.authSource">
+          <option value="tenant">Service Provider</option>
+          <option value="admin">Administrator</option>
+        </select>
+      </div>
+      <input
+        name="username"
+        class="username"
+        type="text"
+        [(ngModel)]="credential.username"
+        required
+        placeholder="Username">
+      <input
+        name="password"
+        class="password"
+        type="password"
+        [(ngModel)]="credential.password"
+        required
+        placeholder="Password">
+      <div *ngIf="error && !isProcessing" class="error active">
+        Invalid user name or password
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!loingForm.valid || isProcessing">
+        <span *ngIf="!isProcessing">
+          LOG IN
+        </span>
+        <span
+          *ngIf="isProcessing"
+          class="spinner spinner-inline">
+          Loading...
+        </span>
+      </button>
+    </div>
+  </form>
+</div>
