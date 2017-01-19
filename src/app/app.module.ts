@@ -9,14 +9,18 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './home/header.component';
 import { AuthGuard } from './auth-guard.service';
+import { TenantsModule } from './tenants/tenants.module';
+import { ProjectsModule } from './projects/projects.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    DashboardComponent,
     HomeComponent,
     HeaderComponent
   ],
@@ -26,7 +30,9 @@ import { AuthGuard } from './auth-guard.service';
     FormsModule,
     HttpModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AppRoutingModule
+    AppRoutingModule,
+    TenantsModule,
+    ProjectsModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
