@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { TenantsComponent } from './tenants.component';
+import { TenantFormComponent } from './tenant-form.component';
 import { TenantService } from './tenant.service';
 
 export const routes: Routes = [
@@ -13,7 +14,8 @@ export const routes: Routes = [
 
 @NgModule({
   declarations: [
-    TenantsComponent
+    TenantsComponent,
+    TenantFormComponent
   ],
   imports: [
     BrowserModule,

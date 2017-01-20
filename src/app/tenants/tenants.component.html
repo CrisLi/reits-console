@@ -1,20 +1,28 @@
-<div style="text-align: center" *ngIf="isLoading">
-  <div class="spinner spinner-md">
-    Loading...
+<div>
+  <div class="new-tenant-btn-group">
+    <button class="btn btn-primary" (click)="toggleForm(true)">New Service Provider</button>
   </div>
-</div>
-<div class="row">
-  <div class="col-xs-4" *ngFor="let tenant of tenants | async">
-    <div class="card">
-      <div class="card-block">
-        <h3 class="card-title">{{tenant.name}}</h3>
-        <p class="card-text">
-          {{tenant.description}}
-        </p>
-      </div>
-      <div class="card-footer">
-        <a routerLink="/tenants/{{tenant.$key}}" class="btn btn-sm btn-link">show</a>
+  <div style="text-align: center" *ngIf="isLoading">
+    <div class="spinner spinner-md">
+      Loading...
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4" *ngFor="let tenant of tenants | async">
+      <div class="card">
+        <div class="card-block">
+          <h3 class="card-title">{{tenant.name}}</h3>
+          <p class="card-text">
+            {{tenant.description}}
+          </p>
+        </div>
+        <div class="card-footer">
+          <a routerLink="/tenants/{{tenant.$key}}" class="btn btn-sm btn-link">show</a>
+        </div>
       </div>
     </div>
+  </div>
+  <div *ngIf="showForm">
+    <rc-tenant-form></rc-tenant-form>
   </div>
 </div>
