@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
-import { ClarityModule } from 'clarity-angular';
+import { Routes } from '@angular/router';
 import { TenantsComponent } from './tenants.component';
 import { TenantFormComponent } from './tenant-form.component';
 import { TenantService } from './tenant.service';
+import { SharedModule } from '../shared.module';
 
 export const routes: Routes = [
   {
@@ -20,10 +18,7 @@ export const routes: Routes = [
     TenantFormComponent
   ],
   imports: [
-    BrowserModule,
-    FormsModule,
-    RouterModule,
-    ClarityModule.forChild(),
+    SharedModule
   ],
   providers: [TenantService],
   exports: [

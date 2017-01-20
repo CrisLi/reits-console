@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
+import { SharedModule } from '../shared.module';
 import { ProjectsComponent } from './projects.component';
 import { ProjectFormComponent } from './project-form.component';
 
@@ -21,7 +21,7 @@ export const routes: Routes = [
     ProjectFormComponent
   ],
   imports: [
-    BrowserModule
+    SharedModule
   ],
   providers: []
 })
