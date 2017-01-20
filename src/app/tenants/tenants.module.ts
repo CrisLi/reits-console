@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { ClarityModule } from 'clarity-angular';
 import { TenantsComponent } from './tenants.component';
 import { TenantFormComponent } from './tenant-form.component';
 import { TenantService } from './tenant.service';
@@ -19,7 +21,9 @@ export const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule
+    FormsModule,
+    RouterModule,
+    ClarityModule.forChild(),
   ],
   providers: [TenantService],
   exports: [

@@ -1,12 +1,6 @@
 <div>
-  <div class="new-tenant-btn-group">
-    <button class="btn btn-primary" (click)="toggleForm(true)">New Service Provider</button>
-  </div>
-  <div style="text-align: center" *ngIf="isLoading">
-    <div class="spinner spinner-md">
-      Loading...
-    </div>
-  </div>
+  <rc-tenant-form></rc-tenant-form>
+  <div>Your service providers:</div>
   <div class="row">
     <div class="col-xs-4" *ngFor="let tenant of tenants | async">
       <div class="card">
@@ -21,8 +15,5 @@
         </div>
       </div>
     </div>
-  </div>
-  <div *ngIf="showForm">
-    <rc-tenant-form></rc-tenant-form>
   </div>
 </div>

@@ -9,14 +9,12 @@ import { TenantService } from './tenant.service';
 export class TenantsComponent implements OnInit {
 
   tenants;
-  isLoading: boolean = true;
   showForm: boolean = false;
 
   constructor(private tenantService: TenantService) {};
 
   ngOnInit() {
     this.tenants = this.tenantService.getTenants();
-    this.tenants.subscribe(() => this.isLoading = false);
   }
 
   toggleForm(value: boolean) {
