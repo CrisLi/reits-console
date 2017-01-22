@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 import { TenantsComponent } from './tenants.component';
 import { TenantFormComponent } from './tenant-form.component';
 import { TenantService } from './tenant.service';
-import { SharedModule } from '../shared.module';
+import { SharedModule } from '../shared/shared.module';
 
 export const routes: Routes = [
   {

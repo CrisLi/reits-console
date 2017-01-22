@@ -97,7 +97,7 @@
       "check-separator",
       "check-type"
     ],
-
+    "no-unused-variable": [true, { "ignore-pattern": "^_" }],
     "directive-selector": [true, "attribute", "rc", "camelCase"],
     "component-selector": [true, "element", "rc", "kebab-case"],
     "use-input-property-decorator": true,
