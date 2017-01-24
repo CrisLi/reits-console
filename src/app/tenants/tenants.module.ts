@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes } from '@angular/router';
 import { TenantsComponent } from './tenants.component';
+import { TenantListComponent } from './tenant-list.component';
 import { TenantComponent } from './tenant.component';
 import { TenantFormComponent } from './tenant-form.component';
 import { TenantService } from './tenant.service';
@@ -23,6 +24,7 @@ export const routes: Routes = [
 @NgModule({
   declarations: [
     TenantsComponent,
+    TenantListComponent,
     TenantFormComponent,
     TenantComponent
   ],

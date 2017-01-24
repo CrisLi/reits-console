@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ToastyService } from 'ng2-toasty';
-import { TenantService, Tenant } from './tenant.service';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Tenant } from './tenant.service';
 
 @Component({
   selector: 'rc-tenant-form',
@@ -8,38 +7,26 @@ import { TenantService, Tenant } from './tenant.service';
 })
 export class TenantFormComponent implements OnInit {
 
-  opened: boolean;
-  isSubmiting: boolean;
   tenant: Tenant;
+
+  @Input()
+  isSubmiting: boolean;
+  @Input()
   errorMessage: string;
 
-  constructor(private tenantService: TenantService, private toastyService: ToastyService) { }
+  @Output()
+  save = new EventEmitter<Tenant>();
+  @Output()
+  cancel = new EventEmitter<any>();
+
+  constructor() {}
 
   ngOnInit() {
     this.resetComponent();
   }
 
-  createTenant() {
-    this.isSubmiting = true;
-    this.errorMessage = null;
-    this.tenantService.createTenant(this.tenant)
-      .then(() => {
-        this.toastyService.success('Service Provider created.');
-        this.toggleForm(false);
-      })
-      .catch((error: any) => {
-        if (error.code === 'PERMISSION_DENIED') {
-          this.errorMessage = 'Service Provider name is existing, please select another one.';
-        }
-        this.isSubmiting = false;
-      });
-  }
-
-  toggleForm(value: boolean) {
-    this.opened = value;
-    if (!this.opened) {
-      this.resetComponent();
-    }
+  onSubmit() {
+    this.save.emit(this.tenant);
   }
 
   private resetComponent() {
@@ -49,6 +36,10 @@ export class TenantFormComponent implements OnInit {
     };
     this.errorMessage = null;
     this.isSubmiting = false;
+  }
+
+  showValidationErrors(model) {
+    return model.errors && (model.dirty || model.touched);
   }
 
 }

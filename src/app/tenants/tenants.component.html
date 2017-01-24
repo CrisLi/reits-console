@@ -1,19 +1,24 @@
 <div>
-  <rc-tenant-form></rc-tenant-form>
-  <div style="font-size: 0.85rem; margin-bottom: 0.5rem">
-    Your service providers:
+  <div class="text-right">
+    <button class="btn btn-primary" (click)="formModal.show()">New Service Provider</button>
   </div>
-  <div class="row">
-    <div class="col-sm-4 mb-2" *ngFor="let tenant of tenants | async">
-      <div class="card">
-        <div class="card-block">
-          <h5 class="card-title">{{tenant.name}}</h5>
-          <p class="card-text">{{tenant.description}}</p>
+  <div class="modal fade" bsModal #formModal="bs-modal" [config]="{ backdrop: 'static' }" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">Create Service Provider</h4>
         </div>
-        <div class="card-footer">
-          <a [routerLink]="['/tenants', tenant.$key]">show</a>
+        <div class="modal-body">
+          <rc-tenant-form
+            *ngIf="formModal.isShown"
+            [isSubmiting]="isSubmiting"
+            [errorMessage]="errorMessage"
+            (save)="createTenant($event)"
+            (cancel)="formModal.hide()">
+          </rc-tenant-form>
         </div>
       </div>
     </div>
   </div>
+  <rc-tenant-list [tenants]="tenants | async"></rc-tenant-list>
 </div>

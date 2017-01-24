@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { ButtonsModule } from 'ng2-bootstrap/buttons';
 import { DropdownModule } from 'ng2-bootstrap/dropdown';
 import { AlertModule } from 'ng2-bootstrap/alert';
+import { ModalModule } from 'ng2-bootstrap/modal';
 import { ToastyModule } from 'ng2-toasty';
 
 @NgModule({
@@ -14,6 +15,7 @@ import { ToastyModule } from 'ng2-toasty';
     ButtonsModule.forRoot(),
     DropdownModule.forRoot(),
     AlertModule.forRoot(),
+    ModalModule.forRoot(),
     ToastyModule.forRoot()
   ],
   providers: [
@@ -25,6 +27,7 @@ import { ToastyModule } from 'ng2-toasty';
     ButtonsModule,
     DropdownModule,
     AlertModule,
+    ModalModule,
     ToastyModule
   ]
 })

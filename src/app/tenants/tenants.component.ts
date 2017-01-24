@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { TenantService } from './tenant.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ToastyService } from 'ng2-toasty';
+import { ModalDirective } from 'ng2-bootstrap';
+import { TenantService, Tenant } from './tenant.service';
 
 @Component({
   selector: 'rc-tenants',
@@ -9,16 +11,33 @@ import { TenantService } from './tenant.service';
 export class TenantsComponent implements OnInit {
 
   tenants;
-  showForm: boolean = false;
+  isSubmiting: boolean;
+  errorMessage: string;
 
-  constructor(private tenantService: TenantService) {};
+  @ViewChild('formModal')
+  formModal: ModalDirective;
+
+  constructor(private tenantService: TenantService,
+              private toastyService: ToastyService) {};
 
   ngOnInit() {
     this.tenants = this.tenantService.getTenants();
   }
 
-  toggleForm(value: boolean) {
-    this.showForm = value;
+  createTenant(tenant: Tenant) {
+    this.isSubmiting = true;
+    this.errorMessage = null;
+    this.tenantService.createTenant(tenant)
+      .then(() => {
+        this.formModal.hide();
+        this.toastyService.success('Service Provider created.');
+      })
+      .catch((error: any) => {
+        if (error.code === 'PERMISSION_DENIED') {
+          this.errorMessage = 'Service Provider name is existing, please select another one.';
+        }
+        this.isSubmiting = false;
+      });
   }
 
 }
