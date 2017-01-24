@@ -4,10 +4,12 @@ import { AngularFire } from 'angularfire2';
 
 @Component({
   selector: 'rc-header',
-  templateUrl: 'header.component.html'
+  templateUrl: 'header.component.html',
+  styleUrls: ['header.component.css']
 })
-
 export class HeaderComponent implements OnInit {
+
+  username: string = 'Admin';
 
   constructor(private af: AngularFire, private router: Router) {}
 

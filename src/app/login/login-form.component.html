@@ -37,6 +37,7 @@
   <button
     class="btn btn-primary form-control"
     type="submit"
+    role="button"
     [disabled]="!loingForm.valid || isProcessing">
       <i class='fa fa-spinner fa-spin' *ngIf="isProcessing"></i>
       <span>Login</span>

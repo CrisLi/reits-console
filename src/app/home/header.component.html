@@ -1,25 +1,26 @@
-<header class="header-6">
-  <div class="branding">
-    <a routerLink="/" class="nav-link">
-      <!--<clr-icon shape="home" class="is-inverse" size="24"></clr-icon>-->
-      <span class="title">Reits Console</span>
-    </a>
+<nav class="navbar navbar-toggleable-sm navbar-inverse fixed-top bg-inverse">
+  <a class="navbar-brand" routerLink="/">Reits Console</a>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav pl-5 mr-auto">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/tenants">Tenants</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/users">Users</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav mr-2">
+      <li class="nav-item dropdown" dropdown>
+        <a class="nav-link dropdown-toggle" role="button" dropdownToggle>
+          <i class="fa fa-user fa-lg" aria-hidden="true"></i>
+          &nbsp; {{username}}
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" dropdownMenu role="menu">
+          <a class="dropdown-item" href="#">Settings</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" (click)="logout()">Logout</a>
+        </div>
+      </li>
+    </ul>
   </div>
-  <!--<div class="header-nav">
-    <a routerLink="/tenants" routerLinkActive="active" class="nav-link"><span class="nav-text">Tenants</span></a>
-    <a routerLink="/users" routerLinkActive="active" class="nav-link"><span class="nav-text">Users</span></a>
-  </div>-->
-  <div class="header-actions">
-    <!--<clr-dropdown class="dropdown bottom-right">
-      <button class="nav-icon" clrDropdownToggle style="margin-right: 20px">
-        <clr-icon shape="user"></clr-icon>
-        <clr-icon shape="caret down"></clr-icon>
-      </button>
-      <div class="dropdown-menu">
-        <a href="/" clrDropdownItem>About</a>
-        <a href="/" clrDropdownItem>Preferences</a>
-        <a (click)="logout()" clrDropdownItem>Log out</a>
-      </div>
-    </clr-dropdown>-->
-  </div>
-</header>
+</nav>
