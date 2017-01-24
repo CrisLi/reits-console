@@ -5,7 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './shared/auth-guard.service';
-import { routes as projectRoutes } from './projects/projects.module';
+import { routes as tenantRoutes } from './tenants/tenants.module';
 
 const routes: Routes = [
   {
@@ -23,8 +23,8 @@ const routes: Routes = [
         component: DashboardComponent
       },
       {
-        path: 'projects',
-        children: projectRoutes
+        path: 'tenants',
+        children: tenantRoutes
       }
     ]
   }

@@ -18,31 +18,25 @@ export interface Credential {
 @Component({
   selector: 'rc-login',
   templateUrl: './login.component.html',
-  styles: []
+  styleUrls: ['login.component.css']
 })
 export class LoginComponent implements OnInit {
 
-  credential: Credential;
   isProcessing: boolean = false;
-  error: boolean;
+  errorMessage: string;
 
   constructor(private af: AngularFire, private router: Router) { }
 
-  ngOnInit() {
-    this.credential = {
-      authSource: 'tenant',
-      username: null,
-      password: null
-    };
-  }
+  ngOnInit() {}
 
-  login() {
+  login(credential) {
 
     this.isProcessing = true;
+    this.errorMessage = null;
 
     const credentials = {
-      email: `${this.credential.username}@${adminDomain}`,
-      password: this.credential.password
+      email: `${credential.username}@${adminDomain}`,
+      password: credential.password
     };
 
     this.af.auth
@@ -52,7 +46,7 @@ export class LoginComponent implements OnInit {
       })
       .catch((error: any) => {
         this.isProcessing = false;
-        this.error = true;
+        this.errorMessage = 'Invalid username or password';
       });
   }
 

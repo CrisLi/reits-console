@@ -8,12 +8,13 @@ export class AuthGuard implements CanActivate {
   constructor(private af: AngularFire, private router: Router) {}
 
   canActivate() {
-    return this.af.auth.map((auth) => {
-      if (auth === null) {
-        this.router.navigate(['/login']);
-      }
-      return true;
-    });
+    return true;
+    // return this.af.auth.map((auth) => {
+    //   if (auth === null) {
+    //     this.router.navigate(['/login']);
+    //   }
+    //   return true;
+    // });
   }
 
 }

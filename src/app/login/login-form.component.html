@@ -1,0 +1,44 @@
+<form
+  novalidate
+  class="form"
+  #loingForm="ngForm"
+  (ngSubmit)="submit()">
+  <alert type="danger" *ngIf="errorMessage">
+    <strong>{{errorMessage}}</strong>
+  </alert>
+  <div class="form-group">
+    <label>Login as</label>
+    <select
+      class="form-control"
+      name="authSource"
+      [(ngModel)]="credential.authSource">
+      <option value="tenant">Service Provider</option>
+      <option value="admin">Administrator</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Username</label>
+    <input
+      class="form-control"
+      name="username"
+      [(ngModel)]="credential.username"
+      type="text"
+      required />
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <input
+      class="form-control"
+      name="password"
+      [(ngModel)]="credential.password"
+      type="password"
+      required />
+  </div>
+  <button
+    class="btn btn-primary form-control"
+    type="submit"
+    [disabled]="!loingForm.valid || isProcessing">
+      <i class='fa fa-spinner fa-spin' *ngIf="isProcessing"></i>
+      <span>Login</span>
+  </button>
+</form>

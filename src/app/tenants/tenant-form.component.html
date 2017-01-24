@@ -3,7 +3,7 @@
     <button class="btn btn-primary" (click)="toggleForm(true)">New Service Provider</button>
   </div>
   <form novalidate (ngSubmit)="createTenant()" #tenantForm="ngForm" *ngIf="opened">
-    <clr-modal [(clrModalOpen)]="opened" [clrModalStaticBackdrop]="true">
+    <!--<clr-modal [(clrModalOpen)]="opened" [clrModalStaticBackdrop]="true">
       <h3 class="modal-title">Create Service Provider</h3>
       <div class="modal-body">
         <div class="alert alert-danger" *ngIf="errorMessage">
@@ -61,6 +61,6 @@
           </span>
         </button>
       </div>
-    </clr-modal>
+    </clr-modal>-->
   </form>
 </div>

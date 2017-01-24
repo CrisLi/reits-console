@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as slug from 'slug';
 
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 
 export interface Tenant {
   name: string;
@@ -11,7 +11,6 @@ export interface Tenant {
 @Injectable()
 export class TenantService {
 
-  private tenantRef;
   private tenants: FirebaseListObservable<any>;
 
   constructor(private af: AngularFire) {
@@ -23,8 +22,12 @@ export class TenantService {
   }
 
   createTenant(tenant: Tenant) {
-    const key =  slug(tenant.name, { lower: true });
+    const key = slug(tenant.name, { lower: true });
     return this.af.database.object(`tenants/${key}`).set(tenant);
+  }
+
+  selectTenant(tenantId: string): FirebaseObjectObservable<any> {
+    return this.af.database.object(`tenants/${tenantId}`);
   }
 
 }

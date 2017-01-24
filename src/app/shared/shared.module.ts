@@ -2,14 +2,16 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { ClarityModule } from 'clarity-angular';
+import { ButtonsModule } from 'ng2-bootstrap/buttons';
+import { AlertModule } from 'ng2-bootstrap/alert';
 import { ToastyModule } from 'ng2-toasty';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    ClarityModule.forChild(),
+    ButtonsModule.forRoot(),
+    AlertModule.forRoot(),
     ToastyModule.forRoot()
   ],
   providers: [
@@ -18,7 +20,8 @@ import { ToastyModule } from 'ng2-toasty';
     BrowserModule,
     FormsModule,
     RouterModule,
-    ClarityModule,
+    ButtonsModule,
+    AlertModule,
     ToastyModule
   ]
 })

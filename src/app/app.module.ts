@@ -7,6 +7,7 @@ import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
+import { LoginFormComponent } from './login/login-form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './home/header.component';
@@ -18,6 +19,7 @@ import { ProjectsModule } from './projects/projects.module';
   declarations: [
     AppComponent,
     LoginComponent,
+    LoginFormComponent,
     DashboardComponent,
     HomeComponent,
     HeaderComponent

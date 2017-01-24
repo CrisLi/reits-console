@@ -1,0 +1,15 @@
+<div class="content-container">
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+    <nav class="sidenav" *ngIf="true">
+      <section class="sidenav-content">
+        <a routerLink="/projects" routerLinkActive="active" class="nav-link">
+          Projects
+        </a>
+        <a routerLink="/accounts" routerLinkActive="active" class="nav-link">
+          Accounts
+        </a>
+      </section>
+    </nav>
+  </div>
