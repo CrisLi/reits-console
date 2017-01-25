@@ -6,7 +6,8 @@ import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'rc-tenant',
-  templateUrl: 'tenant.component.html'
+  templateUrl: 'tenant.component.html',
+  styleUrls: ['tenant.component.css']
 })
 export class TenantComponent implements OnInit {
 

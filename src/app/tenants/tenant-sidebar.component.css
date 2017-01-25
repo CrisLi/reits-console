@@ -1,0 +1,25 @@
+.list-group {
+  font-size: 1rem;
+}
+
+.list-group .list-group-item.list-group-item-header {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.list-group .list-group-item.selected {
+  color: #464a4c;
+  cursor: default;
+  font-weight: bold;
+  background-color: #f7f7f9
+}
+
+.list-group .list-group-item.selected::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  content: "";
+  background-color: #d26911;
+}
