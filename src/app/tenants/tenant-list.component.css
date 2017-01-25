@@ -3,3 +3,10 @@
   margin-bottom: 0.75rem;
   font-size: 1.25rem;
 }
+
+.card-footer a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  width: 100%;
+}

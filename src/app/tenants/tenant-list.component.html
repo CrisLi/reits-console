@@ -9,7 +9,10 @@
         <p class="card-text">{{tenant.description}}</p>
       </div>
       <div class="card-footer">
-        <a [routerLink]="['/tenants', tenant.$key]">show</a>
+        <a [routerLink]="['/tenants', tenant.$key]">
+          <i class="fa fa-university" aria-hidden="true"></i>
+          <span>Show</span>
+        </a>
       </div>
     </div>
   </div>
