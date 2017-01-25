@@ -3,7 +3,8 @@ import { Tenant } from './tenant.service';
 
 @Component({
   selector: 'rc-tenant-list',
-  templateUrl: 'tenant-list.component.html'
+  templateUrl: 'tenant-list.component.html',
+  styleUrls: ['tenant-list.component.css']
 })
 export class TenantListComponent implements OnInit {
 
