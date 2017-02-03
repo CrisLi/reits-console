@@ -8,3 +8,13 @@ body {
   padding-top: 6.5rem;
   background-color: #f4f6f9;
 }
+
+label.required::before {
+  display: inline-block;
+  margin-right: 0.3rem;
+  content: "*";
+  font-family: SimSun;
+  line-height: 1;
+  font-size: 1rem;
+  color: #F04134;
+}

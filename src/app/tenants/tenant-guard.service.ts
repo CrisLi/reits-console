@@ -12,12 +12,11 @@ export class TenantGuard implements CanActivate {
     const tenantId = route.params['tenantId'];
     return this.tenantService
       .selectTenant(tenantId)
-      .map((tenant) => {
-        if (tenant.$exists()) {
-          return true;
+      .map((tenant) => tenant.$exists())
+      .do((result) => {
+        if (!result) {
+          this.router.navigate(['/404']);
         }
-        this.router.navigate(['/']);
-        return false;
       });
   }
 

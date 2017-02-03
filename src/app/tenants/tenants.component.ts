@@ -34,7 +34,7 @@ export class TenantsComponent implements OnInit {
       })
       .catch((error: any) => {
         if (error.code === 'PERMISSION_DENIED') {
-          this.errorMessage = 'Service Provider name is existing, please select another one.';
+          this.errorMessage = 'This name is in use, please select another one.';
         }
         this.isSubmiting = false;
       });

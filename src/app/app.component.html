@@ -1,1 +1,5 @@
-<router-outlet></router-outlet>
+<router-outlet (activate)='isLoading = false'>
+  <div class="text-center" *ngIf="isLoading">
+    <i class='fa fa-spinner fa-spin fa-3x'></i>
+  </div>
+</router-outlet>

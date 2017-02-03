@@ -13,14 +13,14 @@ export interface Tenant {
 @Injectable()
 export class TenantService {
 
-  private tenants: FirebaseListObservable<any>;
+  private tenants: Observable<any>;
   selectedTenant: Tenant;
 
   constructor(private af: AngularFire) {
     this.tenants = af.database.list('tenants');
   }
 
-  getTenants(): FirebaseListObservable<any> {
+  getTenants(): Observable<any> {
     return this.tenants;
   }
 
