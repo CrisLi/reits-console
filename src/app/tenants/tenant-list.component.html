@@ -1,7 +1,10 @@
 <div class="tenant-header">
   Your service providers:
 </div>
-<div class="row">
+<div class="text-center" style="margin-top: 10rem" *ngIf="isLoading">
+  <i class='fa fa-spinner fa-spin fa-3x'></i>
+</div>
+<div class="row" *ngIf="!isLoading">
   <div class="col-sm-4 mb-2" *ngFor="let tenant of tenants">
     <div class="card">
       <div class="card-block">

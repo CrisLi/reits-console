@@ -13,6 +13,7 @@ export class TenantsComponent implements OnInit {
   tenants;
   isSubmiting: boolean;
   errorMessage: string;
+  isLoading: boolean = true;
 
   @ViewChild('formModal')
   formModal: ModalDirective;
@@ -21,7 +22,9 @@ export class TenantsComponent implements OnInit {
               private toastyService: ToastyService) {};
 
   ngOnInit() {
-    this.tenants = this.tenantService.getTenants();
+    this.tenants = this.tenantService
+      .getTenants()
+      .do(() => this.isLoading = false);
   }
 
   createTenant(tenant: Tenant) {

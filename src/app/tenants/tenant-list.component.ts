@@ -11,6 +11,9 @@ export class TenantListComponent implements OnInit {
   @Input()
   tenants: Tenant[] = [];
 
+  @Input()
+  isLoading: boolean = false;
+
   constructor() {}
 
   ngOnInit() {}
