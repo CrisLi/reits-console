@@ -1,6 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-// import { Observable } from 'rxjs/Observable';
-// import { Observer } from 'rxjs/Observer';
 
 export interface Credential {
   authSource: string;

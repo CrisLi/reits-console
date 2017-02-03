@@ -11,6 +11,7 @@ import { LoginFormComponent } from './login/login-form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './home/header.component';
+import { NotFoundComponent } from './not-found.component';
 import { AuthGuard } from './shared/auth-guard.service';
 import { TenantsModule } from './tenants/tenants.module';
 import { ProjectsModule } from './projects/projects.module';
@@ -22,7 +23,8 @@ import { ProjectsModule } from './projects/projects.module';
     LoginFormComponent,
     DashboardComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    NotFoundComponent
   ],
   imports: [
     SharedModule,

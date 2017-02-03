@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/do';
 import * as slug from 'slug';
 
-import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 export interface Tenant {
   name: string;
@@ -12,6 +14,7 @@ export interface Tenant {
 export class TenantService {
 
   private tenants: FirebaseListObservable<any>;
+  selectedTenant: Tenant;
 
   constructor(private af: AngularFire) {
     this.tenants = af.database.list('tenants');
@@ -26,8 +29,10 @@ export class TenantService {
     return this.af.database.object(`tenants/${key}`).set(tenant);
   }
 
-  selectTenant(tenantId: string): FirebaseObjectObservable<any> {
-    return this.af.database.object(`tenants/${tenantId}`);
+  selectTenant(tenantId: string): Observable<any> {
+    return this.af.database
+      .object(`tenants/${tenantId}`)
+      .do((tenant) => this.selectedTenant = tenant);
   }
 
 }

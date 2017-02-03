@@ -11,13 +11,12 @@ import 'rxjs/add/operator/switchMap';
 })
 export class TenantComponent implements OnInit {
 
-  tenant$;
+  tenant;
+
   constructor(private route: ActivatedRoute, private tenantService: TenantService) {}
 
   ngOnInit() {
-    this.tenant$ = this.route.params
-      .map((params: any) => params.tenantId)
-      .switchMap((tenantId: string) => this.tenantService.selectTenant(tenantId));
+    this.tenant = this.tenantService.selectedTenant;
   }
 
 };

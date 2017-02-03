@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TenantSidebarComponent implements OnInit {
 
   @Input()
-  tenantId = 'first-demo-tenant';
+  tenant;
 
   items = [{
     link: 'projects',
@@ -27,8 +27,8 @@ export class TenantSidebarComponent implements OnInit {
     label: 'Settings'
   }];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
 }
