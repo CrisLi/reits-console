@@ -1,0 +1,19 @@
+<div class="form-group" [class.has-danger]="hasError">
+  <label
+    [class.required]="required"
+    class="form-control-label">
+    <ng-content></ng-content>
+  </label>
+  <input
+    class="form-control"
+    [required]="required"
+    [value]="value"
+    (change)="onChange($event.target.value)"
+    (keyup)="onChange($event.target.value)"
+    autocomplete="off" />
+  <div
+    *ngIf="hasError"
+    class="form-control-feedback">
+    {{feedback}}
+  </div>
+</div>

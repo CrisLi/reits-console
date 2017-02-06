@@ -1,36 +1,38 @@
 <form [formGroup]="projectForm" novalidate>
   <div class="form-group">
-    <label class="required">Name</label>
-    <input
-      class="form-control"
+    <rc-input
       formControlName="name"
-      autocomplete="off" />
+      [hasError]="hasError('name')"
+      required>
+      Name
+    </rc-input>
   </div>
   <div formGroupName="address">
-    <div class="form-group">
-      <label class="required">Street</label>
-      <input
-        class="form-control"
-        formControlName="city"
-        autocomplete="off" />
-    </div>
-    <div class="form-group">
-      <label>City</label>
-      <input
-        class="form-control"
-        formControlName="city"
-        autocomplete="off" />
-    </div>
+    <rc-input
+      formControlName="street"
+      feedback="Street is required."
+      [hasError]="hasError(['address', 'street'])"
+      required>
+      Street
+    </rc-input>
+    <rc-input
+      formControlName="city"
+      feedback="City is required."
+      [hasError]="hasError(['address', 'city'])"
+      required>
+      City
+    </rc-input>
   </div>
   <button
     type="submit"
     class="btn btn-success"
-    [disabled]="projectForm.valid">CREATE</button>
+    [disabled]="!projectForm.valid">CREATE</button>
   <button
     type="button"
     class="btn btn-secondary"
     (click)="cancel.emit()">CANCEL</button>
 </form>
+<hr />
 <p>Form value: {{ projectForm.value | json }}</p>
 <p>Form status: {{ projectForm.status | json }}</p>
 <p>Name change: {{ nameChangeLog | json }}</p>

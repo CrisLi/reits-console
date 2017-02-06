@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Address } from '../models/data-model';
 
 @Component({
@@ -31,13 +31,17 @@ export class ProjectFormComponent implements OnInit {
 
   createForm() {
     this.projectForm = this.fb.group({
-      name: ['', Validators.required],
-      // address: this.fb.group({
-      //   street: [''],
-      //   city: ''
-      // })
+      name: [''],
       address: this.fb.group(new Address())
     });
+  }
+
+  hasError(path: Array<string | number> | string, errorCode: string): boolean {
+    const fc = this.projectForm.get(path);
+    if ((fc.dirty || fc.touched) && fc.invalid) {
+      return true;
+    }
+    return false;
   }
 
 }

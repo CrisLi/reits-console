@@ -31,6 +31,7 @@ export class TenantFormComponent implements OnInit {
 
   private resetComponent() {
     this.tenant = {
+      $key: null,
       name: '',
       description: ''
     };

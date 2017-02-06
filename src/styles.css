@@ -11,7 +11,7 @@ body {
 
 label.required::before {
   display: inline-block;
-  margin-right: 0.3rem;
+  margin-right: 0.1rem;
   content: "*";
   font-family: SimSun;
   line-height: 1;

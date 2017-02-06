@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms'; 
+import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ButtonsModule } from 'ng2-bootstrap/buttons';
 import { DropdownModule } from 'ng2-bootstrap/dropdown';
 import { AlertModule } from 'ng2-bootstrap/alert';
 import { ModalModule } from 'ng2-bootstrap/modal';
 import { ToastyModule } from 'ng2-toasty';
+import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { ToastyModule } from 'ng2-toasty';
     DropdownModule.forRoot(),
     AlertModule.forRoot(),
     ModalModule.forRoot(),
-    ToastyModule.forRoot()
+    ToastyModule.forRoot(),
+    ComponentsModule
   ],
   providers: [
   ],
@@ -31,7 +33,8 @@ import { ToastyModule } from 'ng2-toasty';
     DropdownModule,
     AlertModule,
     ModalModule,
-    ToastyModule
+    ToastyModule,
+    ComponentsModule
   ]
 })
 export class SharedModule {
