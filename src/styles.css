@@ -18,3 +18,11 @@ label.required::before {
   font-size: 1rem;
   color: #F04134;
 }
+
+.breadcrumb {
+  background-color: #fff;
+}
+
+button {
+  cursor: pointer;
+}

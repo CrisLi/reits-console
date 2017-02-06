@@ -1,3 +1,36 @@
-<p>
-  project form
-</p>
+<form [formGroup]="projectForm" novalidate>
+  <div class="form-group">
+    <label class="required">Name</label>
+    <input
+      class="form-control"
+      formControlName="name"
+      autocomplete="off" />
+  </div>
+  <div formGroupName="address">
+    <div class="form-group">
+      <label class="required">Street</label>
+      <input
+        class="form-control"
+        formControlName="city"
+        autocomplete="off" />
+    </div>
+    <div class="form-group">
+      <label>City</label>
+      <input
+        class="form-control"
+        formControlName="city"
+        autocomplete="off" />
+    </div>
+  </div>
+  <button
+    type="submit"
+    class="btn btn-success"
+    [disabled]="projectForm.valid">CREATE</button>
+  <button
+    type="button"
+    class="btn btn-secondary"
+    (click)="cancel.emit()">CANCEL</button>
+</form>
+<p>Form value: {{ projectForm.value | json }}</p>
+<p>Form status: {{ projectForm.status | json }}</p>
+<p>Name change: {{ nameChangeLog | json }}</p>
