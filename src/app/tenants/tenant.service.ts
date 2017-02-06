@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/do';
+import { AngularFire } from 'angularfire2';
 import * as slug from 'slug';
-
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import 'rxjs/add/operator/do';
 
 export interface Tenant {
+  $key: string;
   name: string;
   description?: string;
 }
