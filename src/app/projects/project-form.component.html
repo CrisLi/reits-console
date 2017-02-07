@@ -1,27 +1,21 @@
 <form [formGroup]="projectForm" novalidate>
-  <div class="form-group">
-    <rc-input
-      formControlName="name"
-      [hasError]="hasError('name')"
-      required>
-      Name
-    </rc-input>
-  </div>
+  <rc-form-element label="Name">
+    <input class="form-control" formControlName="name" required />
+    <div class="form-control-feedback">Name is required</div>
+  </rc-form-element>
   <div formGroupName="address">
-    <rc-input
-      formControlName="street"
-      feedback="Street is required."
-      [hasError]="hasError(['address', 'street'])"
-      required>
-      Street
-    </rc-input>
-    <rc-input
-      formControlName="city"
-      feedback="City is required."
-      [hasError]="hasError(['address', 'city'])"
-      required>
-      City
-    </rc-input>
+    <rc-form-element label="Street">
+      <input class="form-control" formControlName="street" required />
+      <div class="form-control-feedback">Street is required</div>
+    </rc-form-element>
+    <rc-form-element label="City">
+      <input class="form-control" formControlName="city" required />
+      <div class="form-control-feedback">City is required</div>
+    </rc-form-element>
+    <rc-form-element label="State">
+      <input class="form-control" formControlName="state" required />
+      <div class="form-control-feedback">State is required</div>
+    </rc-form-element>
   </div>
   <button
     type="submit"
