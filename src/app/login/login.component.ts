@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
       .subscribe((result) => {
         this.router.navigate(['/']);
       }, (error) => {
+        console.log(error);
         this.errorMessage = 'Invalid username or password';
         this.isProcessing = false;
       });

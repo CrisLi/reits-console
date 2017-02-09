@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../shared/auth.service';
 
 @Component({
   selector: 'rc-header',
@@ -8,16 +9,17 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  username = 'Admin';
+  username: string;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.username = this.authService.currentUser.nickname;
+  }
 
   logout() {
-    // this.af.auth.logout()
-    //   .then(() => this.router.navigate(['/login']))
-    //   .catch(() => this.router.navigate(['/login']));
+    this.authService.logout();
+    this.router.navigate(['login']);
   }
 
 }
