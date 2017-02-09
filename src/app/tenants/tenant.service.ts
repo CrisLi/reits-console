@@ -4,6 +4,7 @@ import { ApiService } from '../shared/api.service';
 import { Tenant } from '../models/data-model';
 import * as slug from 'slug';
 import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class TenantService {

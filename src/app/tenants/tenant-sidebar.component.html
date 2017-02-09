@@ -6,7 +6,7 @@
     class="list-group-item list-group-item-action"
     routerLinkActive="selected"
     *ngFor="let item of items"
-    [routerLink]="['/tenants', tenant?.$key, item.link]">
+    [routerLink]="['/tenants', tenant?.slug, item.link]">
     {{item.label}}
   </a>
 </div>

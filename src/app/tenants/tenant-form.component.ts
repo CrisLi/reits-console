@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Tenant } from './tenant.service';
+import { Tenant } from '../models/data-model';
 
 @Component({
   selector: 'rc-tenant-form',
@@ -31,7 +31,6 @@ export class TenantFormComponent implements OnInit {
 
   private resetComponent() {
     this.tenant = {
-      $key: null,
       name: '',
       description: ''
     };
