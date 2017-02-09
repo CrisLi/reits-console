@@ -1,17 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
-
-const authConfig = {
-  provider: AuthProviders.Password,
-  method: AuthMethods.Password,
-};
+import { AuthService } from '../shared/auth.service';
 
 const adminDomain = '51qjusa.com';
 
 export interface Credential {
-  authSource: string;
   username: string;
+  authSource: string;
   password: string;
 }
 
@@ -22,10 +17,10 @@ export interface Credential {
 })
 export class LoginComponent implements OnInit {
 
-  isProcessing: boolean = false;
+  isProcessing: boolean;
   errorMessage: string;
 
-  constructor(private af: AngularFire, private router: Router) { }
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit() {}
 
@@ -34,19 +29,14 @@ export class LoginComponent implements OnInit {
     this.isProcessing = true;
     this.errorMessage = null;
 
-    const credentials = {
-      email: `${credential.username}@${adminDomain}`,
-      password: credential.password
-    };
+    const { username, password } = credential;
 
-    this.af.auth
-      .login(credentials, authConfig)
-      .then((auth) => {
+    this.authService.login(`${username}@${adminDomain}`, password)
+      .subscribe((result) => {
         this.router.navigate(['/']);
-      })
-      .catch((error: any) => {
-        this.isProcessing = false;
+      }, (error) => {
         this.errorMessage = 'Invalid username or password';
+        this.isProcessing = false;
       });
   }
 

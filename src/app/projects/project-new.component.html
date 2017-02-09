@@ -7,7 +7,11 @@
     <h4 class="card-title">Create Project</h4>
     <hr />
     <div class="card-text">
-      <rc-project-form (cancel)="back()"></rc-project-form>
+      <rc-project-form
+        [isSubmiting]="isSubmiting"
+        (save)="create($event)"
+        (cancel)="back()">
+      </rc-project-form>
     </div>
   </div>
 </div>

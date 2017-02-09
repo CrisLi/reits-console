@@ -4,6 +4,7 @@ import { SharedModule } from '../shared/shared.module';
 import { ProjectsComponent } from './projects.component';
 import { ProjectNewComponent } from './project-new.component';
 import { ProjectFormComponent } from './project-form.component';
+import { ProjectService } from './project.service';
 
 export const routes: Routes = [
   {
@@ -25,6 +26,6 @@ export const routes: Routes = [
   imports: [
     SharedModule
   ],
-  providers: []
+  providers: [ProjectService]
 })
 export class ProjectsModule { }

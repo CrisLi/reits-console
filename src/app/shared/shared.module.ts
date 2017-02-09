@@ -9,6 +9,9 @@ import { AlertModule } from 'ng2-bootstrap/alert';
 import { ModalModule } from 'ng2-bootstrap/modal';
 import { ToastyModule } from 'ng2-toasty';
 import { ComponentsModule } from '../components/components.module';
+import { ApiService } from './api.service';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth-guard.service';
 
 @NgModule({
   imports: [
@@ -23,6 +26,9 @@ import { ComponentsModule } from '../components/components.module';
     ComponentsModule
   ],
   providers: [
+    ApiService,
+    AuthService,
+    AuthGuard
   ],
   exports: [
     BrowserModule,

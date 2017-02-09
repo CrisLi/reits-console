@@ -1,32 +1,50 @@
-<form [formGroup]="projectForm" novalidate>
-  <rc-form-element label="Name">
-    <input class="form-control" formControlName="name" required />
-    <div class="form-control-feedback">Name is required</div>
-  </rc-form-element>
-  <div formGroupName="address">
-    <rc-form-element label="Street">
-      <input class="form-control" formControlName="street" required />
-      <div class="form-control-feedback">Street is required</div>
-    </rc-form-element>
-    <rc-form-element label="City">
-      <input class="form-control" formControlName="city" required />
-      <div class="form-control-feedback">City is required</div>
-    </rc-form-element>
-    <rc-form-element label="State">
-      <input class="form-control" formControlName="state" required />
-      <div class="form-control-feedback">State is required</div>
-    </rc-form-element>
+<form [formGroup]="projectForm" novalidate (ngSubmit)="submit()">
+  <div class="row">
+    <div class="col-md-6">
+      <rc-form-element label="Name">
+        <input class="form-control" formControlName="name" required />
+        <div class="form-control-feedback">Name is required</div>
+      </rc-form-element>
+      <rc-form-element label="Type">
+        <select class="form-control" formControlName="type" required>
+          <option>Public</option>
+          <option>Private</option>
+        </select>
+        <div class="form-control-feedback">Type is required</div>
+      </rc-form-element>
+      <rc-form-element label="Comments">
+        <textarea class="form-control" formControlName="comments" rows="3">
+        </textarea>
+      </rc-form-element>
+      <div formGroupName="address" *ngIf="false">
+        <rc-form-element label="Street">
+          <input class="form-control" formControlName="street" required />
+          <div class="form-control-feedback">Street is required</div>
+        </rc-form-element>
+        <rc-form-element label="City">
+          <input class="form-control" formControlName="city" required />
+          <div class="form-control-feedback">City is required</div>
+        </rc-form-element>
+        <rc-form-element label="State">
+          <input class="form-control" formControlName="state" required />
+          <div class="form-control-feedback">State is required</div>
+        </rc-form-element>
+        <rc-form-element label="Zip Code">
+          <input class="form-control" formControlName="zipCode" required />
+          <div class="form-control-feedback">Zip Code is required</div>
+        </rc-form-element>
+        <rc-form-element label="Parcel #">
+          <input class="form-control" formControlName="parcelNumber" />
+        </rc-form-element>
+        <rc-form-element label="Zoning">
+          <input class="form-control" formControlName="zoning" />
+        </rc-form-element>
+      </div>
+    </div>
   </div>
-  <button
-    type="submit"
-    class="btn btn-success"
-    [disabled]="!projectForm.valid">CREATE</button>
-  <button
-    type="button"
-    class="btn btn-secondary"
-    (click)="cancel.emit()">CANCEL</button>
+  <button type="submit" class="btn btn-success" [disabled]="!projectForm.valid || isSubmiting">
+    <i class='fa fa-spinner fa-spin' *ngIf="isSubmiting"></i>
+    <span>CREATE</span>
+  </button>
+  <button type="button" class="btn btn-secondary" (click)="cancel.emit()">CANCEL</button>
 </form>
-<hr />
-<p>Form value: {{ projectForm.value | json }}</p>
-<p>Form status: {{ projectForm.status | json }}</p>
-<p>Name change: {{ nameChangeLog | json }}</p>

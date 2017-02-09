@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Address } from '../models/data-model';
 
@@ -13,35 +13,33 @@ export class ProjectFormComponent implements OnInit {
   nameChangeLog: string[] = [];
 
   @Output()
+  save: EventEmitter<any> = new EventEmitter();
+
+  @Output()
   cancel: EventEmitter<any> = new EventEmitter();
+
+  @Input()
+  isSubmiting: boolean;
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
     this.createForm();
-    this.logNameChange();
   }
 
-  logNameChange() {
-    const nameControl = this.projectForm.get('name');
-    nameControl.valueChanges.forEach(
-      (value: string) => this.nameChangeLog.push(value)
-    );
+  submit() {
+    if (this.projectForm.valid) {
+      this.save.emit(this.projectForm.value);
+    }
   }
 
   createForm() {
     this.projectForm = this.fb.group({
       name: [''],
-      address: this.fb.group(new Address())
+      address: this.fb.group(new Address()),
+      type: ['Public'],
+      comments: ['']
     });
-  }
-
-  hasError(path: Array<string | number> | string, errorCode: string): boolean {
-    const fc = this.projectForm.get(path);
-    if ((fc.dirty || fc.touched) && fc.invalid) {
-      return true;
-    }
-    return false;
   }
 
 }

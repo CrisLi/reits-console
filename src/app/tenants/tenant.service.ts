@@ -1,37 +1,29 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { AngularFire } from 'angularfire2';
+import { ApiService } from '../shared/api.service';
+import { Tenant } from '../models/data-model';
 import * as slug from 'slug';
 import 'rxjs/add/operator/do';
-
-export interface Tenant {
-  $key: string;
-  name: string;
-  description?: string;
-}
 
 @Injectable()
 export class TenantService {
 
-  private tenants: Observable<any>;
   selectedTenant: Tenant;
 
-  constructor(private af: AngularFire) {
-    this.tenants = af.database.list('tenants');
-  }
+  constructor(private apiService: ApiService) {}
 
   getTenants(): Observable<any> {
-    return this.tenants;
+    return this.apiService.get('/tenants');
   }
 
-  createTenant(tenant: Tenant) {
-    const key = slug(tenant.name, { lower: true });
-    return this.af.database.object(`tenants/${key}`).set(tenant);
+  createTenant(tenant: Tenant): Observable<any> {
+    tenant['slug'] = slug(tenant.name, { lower: true });
+    return this.apiService.post('/tenants', tenant);
   }
 
   selectTenant(tenantId: string): Observable<any> {
-    return this.af.database
-      .object(`tenants/${tenantId}`)
+    return this.apiService.get(`/tenants/${tenantId}`)
+      .map((res) => res.json())
       .do((tenant) => this.selectedTenant = tenant);
   }
 

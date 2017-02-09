@@ -1,17 +1,22 @@
 // all data models
 
 export class Address {
-  street: string = '';
-  city: string = '';
-  state: string = '';
-  zipCode: string = '';
-  parcelNumber: string = '';
-  zoning: string = '';
+  street: '';
+  city: '';
+  state: '';
+  zipCode: '';
+  parcelNumber: '';
+  zoning: '';
 }
 
 export class Project {
-  name: string = '';
+  name: '';
   address: Address = new Address();
-  type: string = '';
-  comments: string = '';
+  type: '';
+  comments: '';
+}
+
+export class Tenant {
+  name: string;
+  description: string;
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AngularFire } from 'angularfire2';
 
 @Component({
   selector: 'rc-header',
@@ -9,16 +8,16 @@ import { AngularFire } from 'angularfire2';
 })
 export class HeaderComponent implements OnInit {
 
-  username: string = 'Admin';
+  username = 'Admin';
 
-  constructor(private af: AngularFire, private router: Router) {}
+  constructor(private router: Router) {}
 
   ngOnInit() { }
 
   logout() {
-    this.af.auth.logout()
-      .then(() => this.router.navigate(['/login']))
-      .catch(() => this.router.navigate(['/login']));
+    // this.af.auth.logout()
+    //   .then(() => this.router.navigate(['/login']))
+    //   .catch(() => this.router.navigate(['/login']));
   }
 
 }
