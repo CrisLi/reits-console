@@ -11,7 +11,8 @@ export class ProjectService {
 
   getProjects(): Observable<any> {
     const q = JSON.stringify({ tenantId: this.tenantService.selectedTenant._id });
-    return this.apiService.get(`/projects?q=${q}`);
+    const s = JSON.stringify({ name: 1 });
+    return this.apiService.get(`/projects?q=${q}&s=${s}`);
   }
 
   create(project: Project): Observable<any> {

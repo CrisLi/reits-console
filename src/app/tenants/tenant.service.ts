@@ -14,7 +14,8 @@ export class TenantService {
   constructor(private apiService: ApiService) {}
 
   getTenants(): Observable<any> {
-    return this.apiService.get('/tenants');
+    const s = JSON.stringify({ name: 1 });
+    return this.apiService.get(`/tenants?s=${s}`);
   }
 
   createTenant(tenant: Tenant): Observable<any> {

@@ -12,6 +12,7 @@ import { ComponentsModule } from '../components/components.module';
 import { ApiService } from './api.service';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
+import { AddressPipe } from './address.pipe';
 
 @NgModule({
   imports: [
@@ -24,6 +25,9 @@ import { AuthGuard } from './auth-guard.service';
     ModalModule.forRoot(),
     ToastyModule.forRoot(),
     ComponentsModule
+  ],
+  declarations: [
+    AddressPipe
   ],
   providers: [
     ApiService,
@@ -40,7 +44,8 @@ import { AuthGuard } from './auth-guard.service';
     AlertModule,
     ModalModule,
     ToastyModule,
-    ComponentsModule
+    ComponentsModule,
+    AddressPipe
   ]
 })
 export class SharedModule {

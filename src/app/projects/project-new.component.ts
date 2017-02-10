@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ToastyService } from 'ng2-toasty';
 import { ProjectService } from './project.service';
-import { ApiService } from '../shared/api.service';
 
 @Component({
   selector: 'rc-project-new',
@@ -14,6 +14,7 @@ export class ProjectNewComponent implements OnInit {
 
   constructor(private router: Router,
               private route: ActivatedRoute,
+              private toastyService: ToastyService,
               private projectService: ProjectService) {}
 
   ngOnInit() {}
@@ -23,6 +24,9 @@ export class ProjectNewComponent implements OnInit {
     this.projectService
       .create(project)
       .subscribe((response) => {
+        this.back();
+        this.toastyService.success('Project created.');
+      }, (error) => {
         this.isSubmiting = false;
       });
   }
