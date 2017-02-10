@@ -23,9 +23,10 @@ export class TenantService {
   }
 
   selectTenant(tenantId: string): Observable<any> {
-    return this.apiService.get(`/tenants/${tenantId}`)
-      .map((res) => res.json())
-      .do((tenant) => this.selectedTenant = tenant);
+    const q = JSON.stringify({ slug: tenantId });
+    return this.apiService.get(`/tenants?q=${q}&l=1`)
+      .map((result: any) => result[0])
+      .do((tenant: any) => this.selectedTenant = tenant);
   }
 
 }

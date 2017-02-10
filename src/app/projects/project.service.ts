@@ -9,11 +9,14 @@ export class ProjectService {
 
   constructor(private apiService: ApiService, private tenantService: TenantService) {}
 
-  create(project: Project): Observable<any> {
-    return this.apiService.post(this.getBaseUrl(), project);
+  getProjects(): Observable<any> {
+    const q = JSON.stringify({ tenantId: this.tenantService.selectedTenant._id });
+    return this.apiService.get(`/projects?q=${q}`);
   }
 
-  private getBaseUrl() {
-    return `/tenants/${this.tenantService.selectedTenant}/project`;
+  create(project: Project): Observable<any> {
+    project['tenantId'] = this.tenantService.selectedTenant._id;
+    return this.apiService.post(`/projects`, project);
   }
+
 }

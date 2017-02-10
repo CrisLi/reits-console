@@ -14,15 +14,14 @@ export class ProjectNewComponent implements OnInit {
 
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private apiService: ApiService,
               private projectService: ProjectService) {}
 
   ngOnInit() {}
 
   create(project) {
     this.isSubmiting = true;
-    this.apiService
-      .post('/collections/projects?abc=1', project)
+    this.projectService
+      .create(project)
       .subscribe((response) => {
         this.isSubmiting = false;
       });

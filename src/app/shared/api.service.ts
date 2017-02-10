@@ -20,7 +20,6 @@ const jsonResponse = ((response: Response) => response.json());
 const jsonError = (error: Response) => {
   const json = error.json();
   json['status'] = error.status;
-  console.log(Observable.throw);
   return Observable.throw(json);
 };
 

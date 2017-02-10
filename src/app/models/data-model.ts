@@ -17,6 +17,7 @@ export class Project {
 }
 
 export class Tenant {
+  _id: Object;
   name: string;
   description: string;
 }
