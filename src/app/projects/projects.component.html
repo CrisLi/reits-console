@@ -5,9 +5,5 @@
   <a class="btn btn-primary" [routerLink]="['new']" role="button">New Project</a>
 </div>
 <div>
-  <ol>
-    <li *ngFor="let project of projects | async">
-      {{project.name}}
-    </li>
-  </ol>
+  <rc-project-table [data]="projects | async"></rc-project-table>
 </div>

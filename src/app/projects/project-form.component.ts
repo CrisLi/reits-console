@@ -38,6 +38,7 @@ export class ProjectFormComponent implements OnInit {
       name: [''],
       address: this.fb.group(new Address()),
       type: ['Public'],
+      status: ['New'],
       comments: ['']
     });
   }

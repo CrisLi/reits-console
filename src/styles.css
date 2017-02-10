@@ -26,3 +26,12 @@ label.required::before {
 button {
   cursor: pointer;
 }
+
+.table {
+  border-radius: 4px;
+  box-shadow: 0 0 6px rgba(0,0,0,.13);
+}
+
+.table>thead {
+  background: #F4F7F9;
+}
