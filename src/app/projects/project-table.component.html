@@ -18,7 +18,7 @@
           </tr>
           <tr *ngFor="let project of data">
             <td>{{project.name}}</td>
-            <td>{{project.status}}</td>
+            <td><span class="badge badge-info">{{project.status}}</span></td>
             <td>{{project.type}}</td>
             <td>{{project.address | address}}</td>
           </tr>

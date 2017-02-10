@@ -2,6 +2,11 @@
   font-size: 1rem;
 }
 
+.list-group-item {
+  font-size: 1.1rem;
+  padding: 1rem 1.25rem;
+}
+
 .list-group .list-group-item.list-group-item-header {
   font-size: 1.25rem;
   font-weight: bold;
