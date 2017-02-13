@@ -1,0 +1,27 @@
+<div *ngIf="!isLoading">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a [routerLink]="['..']">Projects</a></li>
+    <li class="breadcrumb-item active">{{project?.name}}</li>
+  </ol>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-block">
+          <h4 class="card-title">{{project?.name}}</h4>
+          <div class="card-text">
+            <hr />
+            <address>
+              {{project.address.street}}<br>
+              {{project.address.city}}, {{project.address.state}}, {{project.address.zipCode}}<br>
+            </address>
+          </div>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="text-center mt-4" *ngIf="isLoading">
+  <i class='fa fa-spinner fa-spin fa-3x'></i>
+</div>

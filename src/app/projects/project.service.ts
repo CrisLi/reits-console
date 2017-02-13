@@ -15,6 +15,10 @@ export class ProjectService {
     return this.apiService.get(`/projects?q=${q}&s=${s}`);
   }
 
+  getProject(id: string): Observable<any> {
+    return this.apiService.get(`/projects/${id}`);
+  }
+
   create(project: Project): Observable<any> {
     project['tenantId'] = this.tenantService.selectedTenant._id;
     return this.apiService.post(`/projects`, project);
