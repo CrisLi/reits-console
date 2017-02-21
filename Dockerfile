@@ -1,13 +1,13 @@
 FROM node:latest
 
-RUN mkdir -p /opt/app
+RUN mkdir -p /usr/app
 
-WORKDIR /opt/app
+WORKDIR /usr/app
 
-COPY . /opt/app
+COPY . /usr/app
 
-RUN npm install
-RUN npm build
+RUN npm install --no-optional
+RUN npm run build
 
 ENV PORT=4200
 

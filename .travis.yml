@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - "node"
+  - "7"
+  - "6"
+before_script:
+  - npm install --no-optional
+  - npm run build
+script:
+  - docker build -t crisli/reits-console .
