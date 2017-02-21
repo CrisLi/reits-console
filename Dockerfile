@@ -1,15 +1,16 @@
 FROM node:latest
 
-RUN mkdir -p /usr/src/app
+RUN mkdir -p /opt/app
 
-WORKDIR /usr/src/app
+WORKDIR /opt/app
 
-COPY package.json /usr/src/app
+COPY . /opt/app
 
 RUN npm install
+RUN npm build
 
-COPY . /usr/src/app
+ENV PORT=4200
 
-EXPOSE 4200
+EXPOSE $PORT
 
 CMD ["npm", "run", "prod"]
