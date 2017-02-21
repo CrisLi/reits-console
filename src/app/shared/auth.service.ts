@@ -18,7 +18,6 @@ export class AuthService {
   private auth0 = new auth0.WebAuth({
     domain: 'chris-li.auth0.com',
     clientID: 'P4oZ6O93FslFuOsFG2RoudyJdELIUwBf',
-    callbackURL: 'http://localhost:4200',
     responseType: 'token id_token'
   });
 
