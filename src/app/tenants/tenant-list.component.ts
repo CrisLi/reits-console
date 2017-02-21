@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Tenant } from './tenant.service';
+import { Tenant } from '../models/data-model';
 
 @Component({
   selector: 'rc-tenant-list',
@@ -12,7 +12,7 @@ export class TenantListComponent implements OnInit {
   tenants: Tenant[] = [];
 
   @Input()
-  isLoading: boolean = false;
+  isLoading = false;
 
   constructor() {}
 

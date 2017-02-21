@@ -31,12 +31,12 @@ const routes: Routes = [
       {
         path: 'tenants',
         children: tenantRoutes
+      },
+      {
+        path: '**',
+        component: NotFoundComponent
       }
     ]
-  },
-  {
-    path: '**',
-    component: NotFoundComponent
   }
 ];
 
