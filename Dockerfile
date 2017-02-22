@@ -1,16 +1,5 @@
-FROM node:latest
+FROM crisli/express-server:latest
 
-RUN mkdir -p /usr/app
+COPY dist/ /usr/app/public
 
-WORKDIR /usr/app
-
-COPY . /usr/app
-
-RUN npm install --no-optional
-RUN npm run build
-
-ENV PORT=4200
-
-EXPOSE $PORT
-
-CMD ["npm", "run", "prod"]
+EXPOSE 3000
