@@ -1,1 +1,1 @@
-declare module 'auth0-js'
+// declare module 'auth0-js'
